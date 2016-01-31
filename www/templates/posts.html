@@ -1,0 +1,71 @@
+﻿<ion-content style="background-color:#f1f1f1;" ng-class="getPostViewClass();">
+    <ng-view ng-app="conference" ng-controller="PostsCtrl" ng-init="init();">
+      <!--
+        <div ng-if="isFullWideArticle(0)" ng-click="onClickPost(0);">
+            <div class="buzz-blog-first-item">
+                <div class="item item-body buzz-post-item-body">
+                    <img style="border-top-left-radius: 5px;border-top-right-radius: 5px;" class="full-image" src="{{getFirstBlog().thumbnail_1440}}" err-src="/img/img-not-found.png" orientable />
+                </div>
+                <div class="buzz-post-item-header row">
+                    <div class="col">
+                        <img class="buzz-author-avatar" style="width:50px" src="{{getFirstBlog().author_url}}">
+                        <div class="buzz-post-title">
+                            <div class="buzz-post-title-before">
+                            </div>
+                            <div ng-bind-html="getFirstBlog().title">
+                            </div>
+                        </div>
+                        <h2>{{getFirstBlog().author}}</h2>
+                        <p class="buzz-timestamp">{{getFirstBlog().timeOffset}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="buzz-blog-first-item-after"></div>
+        </div>
+      -->
+
+        <blogs>
+            <div class="left-column" style="position:absolute; left:0%; width:49%; margin-left:0.4em">
+            </div>
+            <div class="right-column" style="position:absolute; left:50%; width:49%">
+            </div>
+            <col_blog style="{{blog.style}}" ng-click="onClickPost($index);" index="{{$index}}" class="buzz-temp" style="width:48%; position:relative" ng-repeat="blog in blogs track by $index"  type="item-link">
+                <div class="blog-frame" style="padding:6px; margin-bottom:5px;" buzz-post>
+                    <div class="item item-body buzz-post-item-body">
+                      <div class="buzz-bookmark" ng-show="blog.favored">
+                        <img src="img/bookmark.png">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                        <img col_blog_image style="border-top-left-radius: 2px;border-top-right-radius: 2px;" class="blog-thumb full-image" src="{{blog.thumbnail_720}}" err-src="/img/img-not-found.png" orientable />
+                      <i ng-click="onMenu($index, $event);" class="buzz-btn-post-menu fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="item buzz-post-item-header">
+                        <p class="buzz-post-halfwidth-title" ng-bind-html="blog.title"></p>
+                      <!--
+                        <div style="text-align:center; line-height:1px">
+                            <div class="buzz-border"></div>
+                        </div>
+                       -->
+                        <div style="margin-top:0.2em; margin-left:0.5em; padding-top: 0.6em; padding-bottom: 0.5em;">
+                            <img class="buzz-author-avatar" style="width:28px;" src="{{blog.author_url}}">
+                            <div class="buzz-author-name">{{blog.author}}</div>
+                            <div class="buzz-author-info">
+
+                                <p class="buzz-timestamp">{{blog.timeOffset}}</p>
+                            </div>
+                            <div btn-menu style="float:right;margin-right:10px;margin-top:6px" class="fa">
+                                <img style="width:20px; vertical-align:middle" ng-src='{{blog.viewerIcon}}'>
+                                <span style="vertical-align:middle; font-size:0.7em;color:#333333">{{blog.viewers}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </col_blog>
+        </blogs>
+
+
+        <ion-infinite-scroll distance="20%" on-infinite="loadMore()" ng-if="hasMoreData">
+        </ion-infinite-scroll>
+    </ng-view>
+</ion-content>

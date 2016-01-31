@@ -1,0 +1,32 @@
+<ion-view title="">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round" style="color:white"></button>
+    <i class='buzz-nav-left-title'>Settings</i>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+
+    <i class="buzz-btn-index icon fa fa-search" ng-click="showSearchBox()"></i>
+  </ion-nav-buttons>
+    <ion-content>
+        <br />
+        <div class="list">
+          <ion-item style="margin-left:1em; color: black !important" class="setting-item">
+            <span>General</span>
+          </ion-item>
+          <ion-item style="margin-left: -1em" class="setting-item" nav-clear href="#/app/blogs">
+              <ion-checkbox class="item-checkbox-right setting-item">
+                  <span >Show Notifications</span>
+                  <p class="buzz-subtitle">ALLOW BUZZHOURLY APP TO SEND YOU PERIODIC NOTIFICATIONS</p>
+              </ion-checkbox>
+          </ion-item>
+          <div class="buzz-profile-seperator"></div>
+          <ion-item class="setting-item" href="#/app/useragreement">
+              <i class="fa fa-file"></i><span>User Agreement</span>
+          </ion-item>
+          <ion-item class="setting-item" href="#/app/useragreement">
+            <i class="fa fa-file"></i><span>Privacy Policy</span>
+          </ion-item>
+        </div>
+    </ion-content>
+</ion-view>

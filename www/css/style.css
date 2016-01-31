@@ -1,0 +1,263 @@
+.item-avatar > img:first-child, .item-avatar .item-image, .item-avatar .item-content > img:first-child, .item-avatar .item-content .item-image, .item-avatar-left > img:first-child, .item-avatar-left .item-image, .item-avatar-left .item-content > img:first-child, .item-avatar-left .item-content .item-image {
+    top: 10px;
+    left: 12px;
+}
+
+.item-avatar > img:first-child, .item-avatar .item-image, .item-avatar .item-content > img:first-child, .item-avatar .item-content .item-image, .item-avatar-left > img:first-child, .item-avatar-left .item-image, .item-avatar-left .item-content > img:first-child, .item-avatar-left .item-content .item-image {
+    max-width: 50px !important;
+    max-height: 50px !important;
+    border-radius: 25px !important;
+}
+
+.item-thumbnail > img:first-child, .item-thumbnail .item-image, .item-thumbnail .item-content > img:first-child, .item-avatar .item-content .item-image, .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+    /*max-width: 50px !important;*/
+    /*max-height: 50px !important;*/
+    border-radius: 40px !important;
+}
+
+
+.menu-left .item {
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #333;
+}
+
+.menu-left .item-complex .item-content, .menu-left .item-radio .item-content {
+    background-color: transparent;
+}
+
+.buzz-sort-header {
+  background-color: #2a7bb2;
+  width: 100%;
+  height: 56px;
+  position: absolute;
+  left: 0px;
+
+  line-height: 60px;
+  font-family: Myriad Pro SemiBold;
+  font-size: 1.4em;
+  text-indent: 2em;
+}
+
+.close-sort-header {
+  font-size: 1.2em;
+  position: absolute;
+  right: 1em;
+}
+
+.buzz-btn-post-menu {
+  color: white;
+  position: absolute;
+  right: 0em;
+  top: 0em;
+  padding: 1em;
+  z-index:1000;
+}
+
+.popup-menus {
+  position:absolute;
+  z-index:101;
+}
+
+.popup-menus li {
+  background-color: white;
+  padding: 1em;
+  font-family: "Myriad Pro semibold"
+  font-size: 1.0em;
+  color: #777777;
+  text-align: center
+
+}
+
+.popup-menus ul:before {
+  content: "";
+  position: absolute;
+  bottom: 47px;
+  left: 172px;
+  border-width: 0px 10px 10px 10px;
+  border-style: solid;
+  border-color: #FFFFFF rgba(0, 0, 0, 0);
+  display: block;
+  width: 0;
+}
+
+.popup-menu-wrapper:after {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left: 171px; /* controls horizontal position */
+  border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+  border-style:solid;
+  border-color:#075698 transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+.popup-menus ul {
+  position: absolute;
+  width: 200px;
+  top: 3em;
+  right: -2.5em;
+}
+
+.buzz-shadow {
+  -webkit-box-shadow: 2px 2px 7px 0px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    2px 2px 7px 0px rgba(50, 50, 50, 0.9);
+  box-shadow:         2px 2px 7px 0px rgba(50, 50, 50, 0.9);
+}
+
+.buzz-search-bar {
+  padding-left:1em;
+  position: fixed;
+  width:100%;
+  height:44px;
+  background-color: #3598DB;
+  z-index:1000;
+}
+
+.buzz-search-bar i {
+  color:white;
+  line-height:44px;
+  font-size:2em;
+  width: 15%;
+
+}
+
+.buzz-search-bar input {
+  //margin-left:1em;
+  width:70%;
+  height:44px;
+  line-height:44px;
+  background-color: transparent;
+  border:none;
+  color:white;
+  font-size:1.9em;
+}
+
+.buzz-search-bar input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    rgba(255, 255, 255, 0.4);
+}
+.buzz-search-bar input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    rgba(255, 255, 255, 0.4);
+}
+.buzz-search-bar input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    rgba(255, 255, 255, 0.4);
+}
+
+.favored:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-width: 50px 50px 0px 0px;
+  border-style: solid;
+  border-color: #3598DB transparent;
+  display: block;
+  width: 0;
+  z-index: 100;
+}
+
+
+.buzz-bookmark {
+  position:absolute;
+}
+
+.buzz-bookmark i {
+  color: white;
+  position: absolute;
+  left: 1em;
+  top:1em;
+  font-size:1.1em;
+}
+
+
+.buzz-confirm-yes {
+  color: #f2090c;
+}
+
+.buzz-profile-tabs {
+  font-family: 'Myriad Pro';
+  font-size:15px;
+  color: #3E3E3E !important;
+  position: relative;
+}
+
+.buzz-profile-tabs > .tabs {
+  top: 0px;
+}
+
+.buzz-posts {
+  top: 115px;
+  padding-top:8px;
+}
+
+.buzz-profile-posts {
+  top: 0px;
+}
+
+
+.setting-item span {
+  font-family: 'Myriad Pro semibold';
+  font-size:1.3em;
+}
+
+.setting-item i {
+  margin-right: 1.5em;
+  font-size: 1.5em;
+}
+
+
+.upload-avatar {
+  width:100%;
+  height:auto;
+}
+
+.buzz-editprofile-item input {
+  display: inline-block;
+  width:55%;
+  color: #54A9E2;
+}
+
+.buzz-editprofile-item input:disabled {
+  background-color:transparent;
+  color: #636363;
+}
+
+.buzz-editprofile-item label {
+  display: inline-block;
+  width:40%;
+  font-family: 'Myriad Pro Bold';
+}
+
+.buzz-editprofile-item textarea {
+  margin-top:2em;
+  height:10em;
+  color: #54A9E2;
+}
+
+.buzz-editprofile-item {
+  padding: 1em;
+  color: #888888;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.buzz-editprofile-button {
+  font-family: 'Myriad Pro Bold';
+  margin: 0.5em;
+  line-height: 3em;
+  color: #636363;
+}
+.buzz-editprofile-item a {
+  font-size:0.9em;
+}
+
+.buzz-editprofile-item i {
+  margin-right:0.2em;
+}
+
+.buzz-searchbox {
+
+}

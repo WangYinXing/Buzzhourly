@@ -1,0 +1,130 @@
+<ion-view title="" ng-init="init();" ng-click="onClick();">
+    <ion-nav-buttons style="width:100%" side="left">
+        <div class="buzz-btn-back" ng-show="isPostDetailPage();" ng-click="onBack();">
+            <i class="button-icon ion-chevron-left"></i>
+            BACK
+        </div>
+        <button menu-toggle="left" class="button button-icon icon ion-navicon-round" style="color:white"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+
+    <!--<ion-content style="overflow:visible" ng-class="getContentClass();">-->
+    <ion-content style="overflow:visible">
+        <div style="margin:0px;" class="list card buzz-card">
+            <div class="item item-body buzz-post-item-body">
+                <img class="full-image" src="{{blog.thumbnail}}" postdetailthumb>
+            </div>
+            <div class="item buzz-post-item-header">
+                <div class="row">
+                    <div class="col">
+                        <img class="buzz-author-avatar" style="width:50px" src="{{blog.avatar_url}}">
+                        <div class="buzz-post-title">
+                            <div class="buzz-post-title-before">
+                            </div>
+                            {{blog.post_title}}
+                        </div>
+                        <!--<h2>{{blog.author.name}}</h2>-->
+                        <p class="buzz-timestamp">Posted {{blog.displayDate}}</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div ng-show="userInfo.signedIn" class="buzz-btn-favorite" ng-click="onFavorite();">
+                <i class="{{favored == 0 ? 'ion-heart' : 'ion-heart-broken'}} icon"></i>
+                <i style="margin-left:0.1em;">{{favored == 0 ? 'FAVORITE' : 'UNLOVED'}}</i>
+            </div>
+
+        </div>
+
+        <div style="text-align:center">
+            <img class="buzz-btn-post-social" ng-click="onShare('facebook');" src="img/social/facebook.png" />
+            <img class="buzz-btn-post-social" ng-click="onShare('twitter');"  src="img/social/twitter.png" />
+          <!--
+            <img class="buzz-btn-post-social" ng-click="onShare('pinterest');"  src="img/social/pinterest.png" />
+           -->
+            <img class="buzz-btn-post-social" ng-click="onShare('mail');"  src="img/social/mail.png" />
+            <img class="buzz-btn-post-social" ng-click="onShare('whatsapp');"  src="img/social/whatsapp.png" />
+        </div>
+
+
+        <div class="buzz-content" compile="blog.contentHTML"></div>
+
+      <ion-spinner icon="spiral"></ion-spinner>
+
+        <div style="text-align:center">
+            <img class="buzz-btn-post-social" ng-click="onShare('facebook');" src="img/social/facebook.png" />
+            <img class="buzz-btn-post-social" ng-click="onShare('twitter');"  src="img/social/twitter.png" />
+          <!--
+            <img class="buzz-btn-post-social" ng-click="onShare('pinterest');"  src="img/social/pinterest.png" />
+           -->
+            <img class="buzz-btn-post-social" ng-click="onShare('mail');"  src="img/social/mail.png" />
+            <img class="buzz-btn-post-social" ng-click="onShare('whatsapp');"  src="img/social/whatsapp.png" />
+        </div>
+
+
+        <div>
+            <div style="margin-top:2em; margin-left:1em" class="buzz-title">
+                {{commentsTitle}}
+            </div>
+            <ion-item ng-hide="comments.length == 0" style="border:none;padding-top:0.2em;padding-bottom:0.2em;" ng-repeat="comment in comments">
+                <div class="list buzz-card" >
+                    <div class="item item-body">
+                        <p style="margin:0px;" ng-bind-html="comment.comment_content"></p>
+                    </div>
+                    <div class="item buzz-comment-header">
+                        <div class="buzz-author-info">
+                            <p class="buzz-comment-author">{{comment.comment_author}}</p>
+                            <p class="buzz-timestamp">{{comment.displayDate}}</p>
+                        </div>
+                        <img class="buzz-author-avatar" style="width:30px" src="{{comment.avatar}}">
+                    </div>
+                </div>
+            </ion-item>
+            <div ng-show="userInfo.signedIn" class="list buzz-card">
+                <div style="border:none" class="item item-body">
+                    <textarea class="buzz-txa-comment" placeholder="Comment here..." ng-model="data.newComment"></textarea>
+                    <div style="float:right; margin-top:10px;">
+                        <i class="buz-postas">POSTING AS {{userInfo.name}}</i>
+                        <button class="button button-small buzz-btn-comment" ng-click="onComment();">COMMENT</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="margin-top:2em; margin-left:1em" class="buzz-title">
+                ALSO BUZZING!
+            </div>
+
+
+
+            <div masonry="{ gutter: 10, transitionDuration: '.0s', hiddenStyle: {opacity: 1, transform: 'scale(0.01)', transform: 'rotate(200deg)'}}">
+                <div class="masonry-brick" style="width:48%" ng-repeat="blog in subPosts track by $index" ng-click="onClickPost($index);" type="item-link">
+                    <div class="item item-body buzz-post-item-body">
+                        <img style="border-top-left-radius: 5px;border-top-right-radius: 5px;" class="full-image" src="{{blog.thumbnail}}" err-src="/img/img-not-found.png" orientable />
+                    </div>
+                    <div class="item buzz-post-item-header">
+
+                        <div ng-if="!isFullWideArticle($index)">
+                            <p class="buzz-post-halfwidth-title" ng-bind-html="blog.title"></p>
+                            <div style="text-align:center; line-height:1px">
+                                <div class="buzz-border"></div>
+                            </div>
+                            <div style="margin-top:0.2em; margin-left:0.5em;">
+                                <img class="buzz-author-avatar" style="width:30px;" src="{{blog.avatar}}">
+                                <h4 style="margin:0px; display:inline-block; vertical-align:middle; margin-left:1em">{{blog.author}}</h4>
+                                <div class="buzz-author-info">
+
+                                    <p class="buzz-timestamp">{{blog.timeOffset}}</p>
+                                </div>
+                                <i class="buzz-favorites-remove icon ion-close" ng-show="isFavoredPost()" ng-click="onRemoveFromFavorites($event, $index);"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

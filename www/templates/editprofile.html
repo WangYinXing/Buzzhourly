@@ -1,0 +1,42 @@
+<ion-view ng-init="init();">
+  <ion-nav-buttons side="left">
+    <i  class='buzz-nav-left-title'>Edit Profile</i>
+  </ion-nav-buttons>
+
+  <ion-content class="buzz-content">
+    <div class="buzz-editprofile-item">
+      <label>USERNAME</label><input type="text" ng-value="data.user_nicename" disabled />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>E-MAIL</label><input type="text" ng-value="data.user_email" disabled />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label style="vertical-align:top">AVATAR</label>
+      <div style="display:inline-block; width:50%;">
+        <img class="upload-avatar" ng-src="{{data.avatar}}" />
+      </div>
+      <div style="text-align:center">
+        <a class="buzz-editprofile-button" ng-click="getPicture()"><i class="fa fa-camera"></i>FROM CAMERA</a>
+        <a class="buzz-editprofile-button" ng-click="fromLibrary()"><i class="fa fa-clone"></i>FROM GALLERY</a>
+      </div>
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>WEBSITE</label><input type="text" ng-value="data.user_url" placeholder="Not provided" />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>FACEBOOK</label><input type="text" ng-value="data.facebook" placeholder="Not provided" />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>TWITTER</label><input type="text" ng-value="data.twitter" placeholder="Not provided" />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>GOOGLE PLUS</label><input type="text" ng-value="data.googlePlus" placeholder="Not provided" />
+    </div>
+    <div class="buzz-editprofile-item">
+      <label>ABOUT</label><textarea ng-model="data.description" placeholder="Not provided" />
+    </div>
+    <div class="buzz-editprofile-item" style="text-align:right">
+      <a class="buzz-editprofile-button" ng-click="upload()"><i class="fa fa-check"></i>UPDATE</a>
+    </div>
+  </ion-content>
+</ion-view>

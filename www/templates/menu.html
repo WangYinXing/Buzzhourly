@@ -1,0 +1,92 @@
+<ion-side-menus ng-init="init();">
+
+    <ion-pane ion-side-menu-content>
+      <div ng-show="menuPoppedup">
+        <div ng-click="onClickBackdrop();" class="buzz-transparent-backdrop" ></div>
+        <div class="popup-menus">
+          <ul class="buzz-shadow">
+            <li>Add to Favorites</li>
+          </ul>
+        </div>
+      </div>
+      <div class="buzz-search-bar" ng-show="mode == 'search'">
+        <i class="fa fa-arrow-left" ng-click="onBackToHome();"></i>
+        <input class="buzz-searchbox" placeholder="Search" >
+      </div>
+      <div class="buzz-backdrop buzz-inner-shadow" ng-show="sideMenuIsOpen();">
+      </div>
+      <!--
+        <ion-nav-bar align-title="right" ng-class="getNavBarClass();">
+        -->
+        <ion-nav-bar class="buzz-nav-bar" align-title="right">
+
+
+            <ion-nav-back-button style="color:white; {{useDefaultBackButton() ? 'display:block' : 'display:none'}};" class="button-icon ion-arrow-left-c">
+            </ion-nav-back-button>
+
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent" animation="slide-left-right">
+        </ion-nav-view>
+
+
+    </ion-pane>
+
+    <ion-side-menu width="300" side="left" enable-menu-with-back-views="true">
+        <!--<header class="bar bar-header bar-dark">
+            <h1 class="title">Menu</h1>
+        </header>-->
+        <ion-content style="position:absolute; top:0px;">
+            <ion-list>
+                <div class="row nav-toolbar buzz-menu-header">
+                  <img menu-close ng-click="onClickAvatar();" ng-src="{{getAvatarURL();}}" class="buzz-avatar" />
+                  <!--
+                    <div ng-click="onSignIn();" class="buzz-signin {{userInfo.signedIn ? 'buzz-hidden' : ''}}">SIGN IN</div>
+
+                    <ion-item  menu-close ng-click="onMyPosts();" ng-class="getMenuClass();">
+                        <i class="nav-icon icon ion-navicon-round"></i>
+                    </ion-item>
+                    <ion-item menu-close ng-click="onFavorites();" ng-class="getMenuClass();">
+                        <i class="nav-icon icon ion-heart"></i>
+                    </ion-item>
+
+                    <ion-item  menu-close ng-click="onSettings();" class="nav-icon-wrapper">
+                        <i class="nav-icon icon ion-android-settings"></i>
+                    </ion-item>
+                    -->
+                  <div ng-class="userMenuOpened ? 'buzz-btn-user-menu-opened' : ''" ng-click="onUserMenu();" class="buzz-btn-user-menu" ng-show="userInfo.signedIn">{{userInfo.name}}
+                    <i class="fa fa-sort-down" style="float:right"></i>
+                  </div>
+                </div>
+
+                <ion-item ng-show="userInfo.signedIn && userMenuOpened" nav-clear menu-close class="menu-item buzz-menu-item buzz-menu-logout" ng-click="onLogout();">
+                  <i class="icon fa fa-power-off"></i>
+                  <span >Log Out</span>
+                </ion-item>
+
+                <ion-list>
+                  <div style="padding:1.2em">
+                    <ion-item ng-hide="(userInfo.signedIn && menu.text == 'Sign In') || (!userInfo.signedIn && menu.text == 'My Profile')"  nav-clear menu-close class="menu-item buzz-menu-item" ng-click="onMenu(menu.text)" ng-repeat="menu in menus">
+                      <i class="icon" ng-class="menu.icon"></i>
+                      <span >{{menu.text}}</span>
+                      <br/>
+                      <span class="buzz-menu-subtext">{{menu.subtext}}</span>
+                    </ion-item>
+                  </div>
+
+                </ion-list>
+
+                <!-- menu-close has disabled.. -->
+                <div class="buzz-menu-seperator"></div>
+                <ion-list>
+                    <ion-item nav-clear menu-close class="menu-item category" ng-click="onSelectCategory(-1)">
+                      <i style="vertical-align:middle">#ALL</i>
+                    </ion-item>
+                    <ion-item menu-close nav-clear class="menu-item category" ng-repeat="item in categories track by $index" ng-click="onSelectCategory($index)">
+                        <i style="vertical-align:middle">{{item.name}}</i>
+                    </ion-item>
+                </ion-list>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

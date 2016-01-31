@@ -1,0 +1,51 @@
+<ion-view ng-init="init();">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon-round" style="color:white"></button>
+    <i class='buzz-nav-left-title'>{{getTitle()}}</i>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+
+    <i class="buzz-btn-index icon fa fa-search" ng-click="showSearchBox()"></i>
+    <!--
+      <a class="button icon-right ion-chevron-down btn-sort" ng-hide="isIndexMode();"  ng-click="showSortModes();">
+        <span style="margin-right:10px">{{orderby}}</span>
+      </a>
+      -->
+    <i ng-click="onMenu();" class="buzz-btn-sort fa fa-ellipsis-v"></i>
+  </ion-nav-buttons>
+
+
+    <ion-content style="height:256px;" scroll="false" class="has-header">
+      <div class="buzz-profile-board">
+        <div class="buzz-avatar-wrapper">
+          <img class="buzz-avatar"  src="{{getAvatarURL();}}"/>
+        </div>
+        <p class="buzz-profile-username">{{userInfo.name}}</p>
+        <p class="buzz-profile-nickname">@{{userInfo.name}}</p>
+      </div>
+      <div class="buzz-profile-tabs tabs-striped tabs-top tabs-background-positive tabs-dark">
+        <div class="tabs" style="border-bottom: 2px solid #c6c6c6;">
+          <a class="tab-item" ng-repeat="tab in tabs" ng-class="getTabStatus($index);" ng-click="onTab($index);">
+            {{tab.text}}
+          </a>
+        </div>
+      </div>
+      <!--
+      <div style="text-align:center; background-color:white" class="row">
+        <div class="col" ng-click="onClick('about')">ABOUT</div>
+        <div class="col" ng-click="onClick('my_posts')">MY POSTS</div>
+        <div class="col" ng-click="onClick('favorites')">MY FAVORITES</div>
+      </div>
+      -->
+    </ion-content>
+  <div ng-include="profileView" class="profile-tab-content">
+
+  </div>
+  <!--
+  <ion-content style="top:400px;">
+    <div ng-view >
+    </div>
+  </ion-content>
+  -->
+</ion-view>
